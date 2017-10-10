@@ -1,0 +1,16 @@
+
+
+Tricks with Bits:
+
+1) x ^ ( x & (x-1))
+
+	Returns number with only rightmost bit set
+
+2) x & (-x)
+	
+	Returns number with only rightmost bit set
+
+3)  x | (1 << n)
+	
+	Handy to set n th bit of number
+
