@@ -36,41 +36,41 @@
 // return 0;}
 
 
-// #include <iostream>
-// #include <map>
-// #include <vector>
-// #include<bits/stdc++.h>
-// using namespace std;
-// unsigned long long int NoOfOnes(unsigned long long  int num){
-//    unsigned long long  int count=0;
-//     while(num){
-//         num= ( (num) & (num-1) );
-//         count++;
-//     }
-//     return count;
-// }
-// int main(){
-//     int tc;
-//     cin>>tc;
-//     while(tc--){
-//         unsigned  long long int N,temp,val,ones;
-//         cin>>N;
-//         set<pair<unsigned  long long  int,unsigned long long  int> > set1;
-//         for(unsigned long long  int i=0;i<N;i++){
-//             cin>>temp;
-//             ones=NoOfOnes(temp);
-//             set1.insert(make_pair(ones,temp));
-//         }
-//         set<pair<unsigned  long long  int,unsigned long long  int> >::iterator it;
+#include <iostream>
+#include <map>
+#include <vector>
+#include<bits/stdc++.h>
+using namespace std;
+unsigned long long int NoOfOnes(unsigned long long  int num){
+   unsigned long long  int count=0;
+    while(num){
+        num= ( (num) & (num-1) );
+        count++;
+    }
+    return count;
+}
+int main(){
+    int tc;
+    cin>>tc;
+    while(tc--){
+        unsigned  long long int N,temp,val,ones;
+        cin>>N;
+        set<pair<unsigned  long long  int,unsigned long long  int> > set1;
+        for(unsigned long long  int i=0;i<N;i++){
+            cin>>temp;
+            ones=NoOfOnes(temp);
+            set1.insert(make_pair(ones,temp));
+        }
+        set<pair<unsigned  long long  int,unsigned long long  int> >::iterator it;
         
-//         for(it=set1.begin();it!=set1.end();it++){
-//             cout<<it->second<<" ";
-//         }
+        for(it=set1.begin();it!=set1.end();it++){
+            cout<<it->second<<" ";
+        }
 
-//     cout<<endl;
-//     }
+    cout<<endl;
+    }
     
-// return 0;}
+return 0;}
 
 #include<bits/stdc++.h>
 using namespace std;

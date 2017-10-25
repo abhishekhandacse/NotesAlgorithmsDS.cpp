@@ -17,7 +17,6 @@ void connect(Node *root){
    if(root==NULL) return;
    queue<Node*> q;
    q.push(root);
-   Node *temp=NULL;
    int count;
    while(1){
        count=q.size();

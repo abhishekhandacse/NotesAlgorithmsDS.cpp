@@ -1,6 +1,9 @@
 // This does not require any space complexity
 // since it does not require hashmap of vectors
 
+// TIme-: O(N^2) in case of skewed tree
+// Space-: O(1)
+// Better than previous apporach
 
 
 /*
