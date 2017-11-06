@@ -1,0 +1,32 @@
+CHEATING HUSBAND PUZZLE
+September 3, 2012Posted by: Kamal Rawat Category:	Puzzles  No Comments
+A certain town has 100 married couples (husband and wife only). Everyone in the town lives by the following rule:
+
+If a husband cheats on his wife, the husband is executed (killed) as soon as his wife get to know out about him (He may enjoy only as long as his wife does not get to know about it).
+All the women in the town only gossip about the husbands of other women but no woman ever tells another woman if her husband is cheating on her. ( So every woman in the town knows about all the cheating husbands in the town except her own).
+Husbands always remain silent.
+One day an outsider came to the town and some how, got to know about all the cheating and non-cheating husbands.
+
+The next day while leaving he announced to the entire town – “There is at least one cheating husband in the town”. 
+
+What will happen ?
+
+Solution:
+
+This problem is in the lines of Blue eyed Islander Puzzle. The solution to the problem is also in the lines of this puzzle only. Let’s start methodologically and consider cases:
+
+If there is only 1 cheating husband
+
+99 women knows who is cheating. Only 1 woman (wife of the cheater) does not know of anyone cheating. Wife of the cheater must be thinking that none of the husbands cheat. After announcement, she will realize that her own husband is cheating (if anyone else is cheating, then she must have been aware of it).
+
+So the cheating husband will die on the first day (same day).
+
+If there are 2 cheating husbands
+
+Wives of both the cheating husbands, think that there is only one cheating husband (i.e the other one) and hence will expect the other husband to die on the first day. When no one dies on the first day, then on the 2’nd day both of them will realize that their husband is also cheating (along with the other one).
+
+Hence, both the cheating husbands die on the 2’nd day.
+
+If there are n cheating husbands.
+
+Going by the above logic, All the n cheating husbands will dies on the n’th day.
