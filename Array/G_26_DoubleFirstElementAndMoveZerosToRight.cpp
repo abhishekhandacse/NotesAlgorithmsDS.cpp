@@ -38,7 +38,7 @@ int main(){
 		int *arr=new int[size];
 		for(int i=0;i<size;i++)
 			cin>>arr[i];
-		MoveZerosToRight(arr,size);
+		// MoveZerosToRight(arr,size);
 		DobuleNzero(arr,size);
 		MoveZerosToRight(arr,size);
 
