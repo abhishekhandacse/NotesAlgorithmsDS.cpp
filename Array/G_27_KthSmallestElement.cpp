@@ -23,6 +23,11 @@ int KSmallestHeap(int *arr,int size,int k){
 	}
 	return pq.top();
 }
+// Method 3 Quick Sort O(nlong)  average case  worst case O(N^2)
+
+
+
+
 
 int main(){
 
