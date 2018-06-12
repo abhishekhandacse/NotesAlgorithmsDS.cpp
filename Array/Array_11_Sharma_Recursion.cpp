@@ -1,10 +1,7 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-
 void printBinary(int *arr,int size,int *aux,int k,vector<int> &vect){
-
 	if(k==size){
 		int num=0;
 		for(int i=0;i<size;i++)
@@ -17,12 +14,10 @@ void printBinary(int *arr,int size,int *aux,int k,vector<int> &vect){
 		cout<<endl;
 		return;
 	}
-
 	aux[k]=0;
 	printBinary(arr,size,aux,k+1,vect);
 	aux[k]=1;
 	printBinary(arr,size,aux,k+1,vect);
-
 }
 
 int main(){
