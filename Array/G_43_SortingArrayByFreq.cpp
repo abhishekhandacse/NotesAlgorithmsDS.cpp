@@ -30,8 +30,8 @@ int main(){
 			mapans[ it->second ].insert(it->first);
 		}
 
-		map<int,set<int>> ::reverse_iterator it;
-		for(it=mapans.rbegin();it!=mapans.rend();it++){
+		// map<int,set<int>> ::reverse_iterator it;
+		for(auto it=mapans.rbegin();it!=mapans.rend();it++){
 			for(auto itset=(it->second).begin();itset!=(it->second).end();itset++){
 				for(int i=(it->first)-1;i>=0;i--)
 					cout<<*itset<<" ";
