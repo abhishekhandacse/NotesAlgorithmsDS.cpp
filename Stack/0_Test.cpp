@@ -37,7 +37,7 @@ int getMaxArea(int hist[], int n)
  			
             // Calculate the area with hist[tp] stack as smallest bar
             area_with_top = hist[tp] * (s.empty() ? i : i - s.top() - 1);
- 			int var=s.empty();
+ 			int var=;
  			cout<< i<<"-->"<<var<<"-->"<<area_with_top<<" ";
             // update max area, if needed
             if (max_area < area_with_top)

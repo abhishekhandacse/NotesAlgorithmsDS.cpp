@@ -3,7 +3,15 @@
 using namespace std;
 
 void ArrayOfAlternate(int *arr,int N){
-	int negative=(N/2),positive=N-negative;
+	int negative=0,positive=0;
+	for(int i=0;i<N;i++){
+	    if(arr[i]>=0){
+	        positive++;
+	    }else{
+	        negative++;
+	    }
+	}
+	    
 	int *pos=new int[positive];
 	int *neg=new int[negative];
 	int pindex=0,nindex=0;
@@ -24,8 +32,15 @@ void ArrayOfAlternate(int *arr,int N){
 		pindex++;
 		nindex++;		
 	}
-	if(pindex<positive)
-		cout<<pos[pindex]<<endl;
+	while(pindex<positive){
+		cout<<pos[pindex]<<" ";
+		pindex++;
+	}
+	while(nindex<negative){
+	    cout<<neg[nindex]<<" ";
+	    nindex++;
+	}
+	cout<<endl;
 
 }
 

@@ -38,7 +38,7 @@ void Graph::addEdge(int v, int w)
     adj[v].push_back(w); // Add w to v’s list.
 }
  
-void Graph::DFSUtil(int v, bool visited[],)
+void Graph::DFSUtil(int v, bool visited[],int *arr,int N,int Max,int ans)
 {
     // Mark the current node as visited and
     // print it
@@ -48,9 +48,14 @@ void Graph::DFSUtil(int v, bool visited[],)
     // Recur for all the vertices adjacent
     // to this vertex
     list<int>::iterator i;
-    for (i = adj[v].begin(); i != adj[v].end(); ++i)
-        if (!visited[*i])
-            DFSUtil(*i, visited);
+    for (i = adj[v].begin(); i != adj[v].end(); ++i){
+        if (!visited[*i]){
+        	if(arr[*i]){
+        		Max--;
+        	}
+            DFSUtil(*i, visited,arr,N,Max,ans);
+        }
+    }
 }
  
 // DFS traversal of the vertices reachable from v.
