@@ -7,6 +7,8 @@ using namespace std;
 int noOfpairs(int *arr1,int *arr2,int x,int y){
 	int count=0;
 
+
+	
 	for(int i=0;i<x;i++){
 		for(int j=0;j<y;j++){
 			if(pow(arr1[i],arr2[j])>pow(arr2[j],arr1[i]))
