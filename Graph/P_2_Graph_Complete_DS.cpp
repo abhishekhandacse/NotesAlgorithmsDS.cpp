@@ -11,6 +11,7 @@ class Graph{
 	// Aux funtion for Counting Paths
 	void CountPathsUtil(int u, int d,vector<bool> &v,int &pathCount);
 	void DFS_checkCycle_directed(int i,bool &ans,vector<bool> &visited);
+	bool DFS_checkCycle_Undirected(int S,vector<bool> &visited,int parent);
 public:
 	Graph(int V);
 	void addEdge(int u,int v);
@@ -19,6 +20,7 @@ public:
 	int FindMother();
 	int CountPaths(int S,int D);
 	bool IsCyclic_directed();
+	bool IsCyclic_Undirected();
 };
 Graph::Graph(int V){
 		this->V=V;
@@ -26,6 +28,7 @@ Graph::Graph(int V){
 }
 void Graph::addEdge(int u,int v){
 	G[u].push_back(v);
+	G[v].push_back(u);
 }
 // Functions for doing DFS
 
@@ -143,16 +146,63 @@ void Graph::DFS_checkCycle_directed(int i,bool &ans,vector<bool> &visited){
 	}
 }
 
+//Cycle detection algo for directed graph
+/*	** here is just a small difference that Algong with DFS it keep track of parent from which
+  	   It is comming from so as to not consider it as cycle
+    ** There is additional assumption that there are no parallel edges present in the graph
+*/
+
+bool Graph::DFS_checkCycle_Undirected(int S,vector<bool> &visited,int parent){
+
+	visited[S]=true;
+	//Do DFS in adjancy list of G
+		for(auto i:adj[S]){
+        // If an adjacent is not visited, then recur for that adjacent
+        if (!visited[i])
+        {
+           if (DFS_checkCycle_Undirected(i, visited, S,adj))
+              return true;
+        }
+ 
+        // If an adjacent is visited and not parent of current vertex,
+        // then there is a cycle.
+        else if (i != parent)
+           return true;
+    
+		
+	}
+	return false;
+}
+bool Graph::IsCyclic_Undirected(){
+	vector<bool> visited(V,false);
+	for(int i=0;i<V;i++){
+		if( (visited[i]==false) && (DFS_checkCycle_Undirected(i,visited,-1)))
+			return true;
+
+		
+	}
+	return false;
+}
+
 int main(){
 
-    Graph g(4);
-    g.addEdge(0, 1);
-    g.addEdge(1, 2);
-    g.addEdge(2, 3);
-    // g.addEdge(3, 0);
-    
- 	cout<<g.IsCyclic_directed()<<endl;
-    return 0;
+
+	Graph g1(5);
+    g1.addEdge(1, 0);
+    g1.addEdge(0, 2);
+    g1.addEdge(2, 0);
+    g1.addEdge(0, 3);
+    g1.addEdge(3, 4);
+    g1.IsCyclic_Undirected()? cout << "Graph contains cycle\n":
+                   cout << "Graph doesn't contain cycle\n";
  
+    Graph g2(3);
+    g2.addEdge(0, 1);
+    g2.addEdge(1, 2);
+    g2.IsCyclic_Undirected()? cout << "Graph contains cycle\n":
+                   cout << "Graph doesn't contain cycle\n";
+ 
+
     
+    return 0;
 }
