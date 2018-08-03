@@ -17,7 +17,7 @@ public:
 	void addEdge(int u,int v);
 	void BFS(int S);
 	void DFS(int S);
-	
+	int FindMother();
 };
 void Graph::addEdge(int u,int v){
 	G[u].push_back(v);
@@ -39,7 +39,6 @@ void Graph::DFS(int S){
 	cout<<endl;
 }
 // Function for doing BFS
-
 void Graph::BFS(int S){
 	vector<bool> visited(V,false);
 	list<int> Q;
@@ -64,20 +63,42 @@ void Graph::BFS(int S){
 	}
 	cout<<endl;
 }
-int main()
-{
-    // Create a graph given in the above diagram
-    Graph g(4);
+// Mother Vertex
+/* Small Explanation
+	In this code ,when we will reach Mother vertex
+	after that we cannot visit any other node because by defination its the node from which
+	we can reach every node,So automatically it would be last visited node of DFS
+*/
+int Graph::FindMother(){
+	vector<bool> visited(V,false);
+	int v=0;
+	for(int i=0;i<V;i++){
+		if(visited[i]==false){
+			DFS_util(visited,i);
+			v=i;
+		}
+	}
+
+	fill(visited.begin(),visited.end(),false);
+	DFS_util(visited,v);
+	for(int i=0;i<V;i++)
+		if(visited[i]==false)
+			return -1;
+	return v;
+}
+int main(){
+
+    Graph g(7);
     g.addEdge(0, 1);
     g.addEdge(0, 2);
-    g.addEdge(1, 2);
-    g.addEdge(2, 0);
-    g.addEdge(2, 3);
-    g.addEdge(3, 3);
+    g.addEdge(1, 3);
+    g.addEdge(4, 1);
+    g.addEdge(6, 4);
+    g.addEdge(5, 6);
+    g.addEdge(5, 2);
+    g.addEdge(6, 0);
  
-    cout << "Following is Breadth First Traversal "
-         << "(starting from vertex 2) \n";
-    // g.BFS(2);
- 	g.DFS(2);
+    cout << "A mother vertex is " << g.FindMother();
+ 
     return 0;
 }
