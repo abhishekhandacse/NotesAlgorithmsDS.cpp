@@ -10,7 +10,7 @@ class Graph{
 	void DFS_util(vector<bool> &visited,int S);
 	// Aux funtion for Counting Paths
 	void CountPathsUtil(int u, int d,vector<bool> &v,int &pathCount);
-	void DFS_checkCycle(int i,bool &ans,vector<bool> &visited);
+	void DFS_checkCycle_directed(int i,bool &ans,vector<bool> &visited);
 public:
 	Graph(int V);
 	void addEdge(int u,int v);
@@ -18,7 +18,7 @@ public:
 	void DFS(int S);
 	int FindMother();
 	int CountPaths(int S,int D);
-	bool IsCyclic();
+	bool IsCyclic_directed();
 };
 Graph::Graph(int V){
 		this->V=V;
@@ -121,24 +121,24 @@ void Graph::CountPathsUtil(int S,int D,vector<bool> &visited,int &count){
 	We can do DFS from every node and check weather some node is begin visited twice
 	If this is the case return true as cycle exists otherwise no cycle exists in the graph
 */
-bool Graph::IsCyclic(){
+bool Graph::IsCyclic_directed(){
 	bool ans=false;
 	vector<bool> visited(V,false);
 	for(int i=0;i<V;i++){
 		if(ans)return ans;
-		DFS_checkCycle(i,ans,visited);
+		DFS_checkCycle_directed(i,ans,visited);
 		fill(visited.begin(),visited.end(),false);
 	}
 	return ans;
 }
-void Graph::DFS_checkCycle(int i,bool &ans,vector<bool> &visited){
+void Graph::DFS_checkCycle_directed(int i,bool &ans,vector<bool> &visited){
 	if(ans)return;
 	visited[i]=true;
 
 	// Do DFS in Adjancecy list of S
 	for(auto ii:G[i]){
 		if(visited[ii]==false)
-			DFS_checkCycle(ii,ans,visited);
+			DFS_checkCycle_directed(ii,ans,visited);
 		else {ans=true;break;}
 	}
 }
@@ -151,7 +151,7 @@ int main(){
     g.addEdge(2, 3);
     // g.addEdge(3, 0);
     
- 	cout<<g.IsCyclic()<<endl;
+ 	cout<<g.IsCyclic_directed()<<endl;
     return 0;
  
     
