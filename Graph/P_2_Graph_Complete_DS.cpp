@@ -12,6 +12,7 @@ class Graph{
 	void CountPathsUtil(int u, int d,vector<bool> &v,int &pathCount);
 	void DFS_checkCycle_directed(int i,bool &ans,vector<bool> &visited);
 	bool DFS_checkCycle_Undirected(int S,vector<bool> &visited,int parent);
+	void TopologicalSortUtil(int S,vector<bool> &visited,list<int> &st);
 public:
 	Graph(int V);
 	void addEdge(int u,int v);
@@ -21,6 +22,7 @@ public:
 	int CountPaths(int S,int D);
 	bool IsCyclic_directed();
 	bool IsCyclic_Undirected();
+	void TopologicalSort();
 };
 Graph::Graph(int V){
 		this->V=V;
@@ -28,7 +30,7 @@ Graph::Graph(int V){
 }
 void Graph::addEdge(int u,int v){
 	G[u].push_back(v);
-	G[v].push_back(u);
+	// G[v].push_back(u);
 }
 // Functions for doing DFS
 
@@ -156,11 +158,11 @@ bool Graph::DFS_checkCycle_Undirected(int S,vector<bool> &visited,int parent){
 
 	visited[S]=true;
 	//Do DFS in adjancy list of G
-		for(auto i:adj[S]){
+		for(auto i:G[S]){
         // If an adjacent is not visited, then recur for that adjacent
         if (!visited[i])
         {
-           if (DFS_checkCycle_Undirected(i, visited, S,adj))
+           if (DFS_checkCycle_Undirected(i, visited, S))
               return true;
         }
  
@@ -183,26 +185,48 @@ bool Graph::IsCyclic_Undirected(){
 	}
 	return false;
 }
+// Topoligical Sort
+/*
+	* Topological sort ensures that if there is a dependency from U->V then in topogical order U comes before V
+	* There can be many topological Sorts possible for a graph
+	* Topological Sort is also possible using Kahn's algorithn or modified BFS
+*/
+void Graph::TopologicalSortUtil(int S,vector<bool> &visited,list<int> &st){
+	visited[S]=true;
+
+	for(auto i:G[S]){
+		if(visited[i]==false)
+			TopologicalSortUtil(i,visited,st);
+	}
+	st.push_back(S);
+}
+void Graph::TopologicalSort(){
+	vector<bool> visited(V,false);
+	list<int> st;
+	for(int i=0;i<V;i++){
+		if(visited[i]==false)
+			TopologicalSortUtil(i,visited,st);
+	}
+	while(!st.empty()){
+		cout<<st.back()<<" ";
+		st.pop_back();
+	}
+}
+
 
 int main(){
 
 
-	Graph g1(5);
-    g1.addEdge(1, 0);
-    g1.addEdge(0, 2);
-    g1.addEdge(2, 0);
-    g1.addEdge(0, 3);
-    g1.addEdge(3, 4);
-    g1.IsCyclic_Undirected()? cout << "Graph contains cycle\n":
-                   cout << "Graph doesn't contain cycle\n";
+	 Graph g(6);
+    g.addEdge(5, 2);
+    g.addEdge(5, 0);
+    g.addEdge(4, 0);
+    g.addEdge(4, 1);
+    g.addEdge(2, 3);
+    g.addEdge(3, 1);
  
-    Graph g2(3);
-    g2.addEdge(0, 1);
-    g2.addEdge(1, 2);
-    g2.IsCyclic_Undirected()? cout << "Graph contains cycle\n":
-                   cout << "Graph doesn't contain cycle\n";
+    cout << "Following is a Topological Sort of the given graph \n";
+    g.TopologicalSort();
  
-
-    
     return 0;
 }
