@@ -11,7 +11,7 @@ void pd_aux(int *arr,int size,int &count,int num,int &flag,int mul=10){
 	if(num>26)return ;
 	if(size==0){
 		count+=1;
-		cout<<num<<endl;
+// 		cout<<num<<endl;
 		return;
 	}
 	
@@ -19,7 +19,7 @@ void pd_aux(int *arr,int size,int &count,int num,int &flag,int mul=10){
 	pd_aux(arr,size-1,count,arr[size-1]*mul+num,flag,(mul*10) );
 
 	//Break
-	// if(arr[size])
+	if(arr[size])
 		pd_aux(arr,size-1,count,arr[size-1],flag);
 }
 int PossibleDecodings(int *arr,int size){
@@ -27,7 +27,8 @@ int PossibleDecodings(int *arr,int size){
 	int flag=0;
 	// for(int i=0;i<size;i++)
 	// 	cout<<arr[i]<<" ";
-	pd_aux(arr,size-1,count,arr[size-1],flag);
+	if(arr[0]!=0)
+	    pd_aux(arr,size-1,count,arr[size-1],flag);
 	return count;
 }
 
