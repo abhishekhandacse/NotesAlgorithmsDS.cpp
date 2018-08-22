@@ -1,3 +1,35 @@
-# NotesAlgorithmsDS.cpp
-This includes  standard algorithms and Data Structures in Computer Science.
-It includes simplified version of all the algorithms and data structures complied from different sources like geeks for geeks ,code monk and books like  karumanchi etc.
+# Notes Data Structures & Algorithms in CPP
+>  This contains mine solution to various judges like codeforces,spoj,hackerearth,hackerrank,codechef etc. I have referred many usesful resources in making this repository like geeks for geeks , Algorithm book by Karumanchi , Cracking the Coding Interview , CLRS etc. 
+
+#####  This Repository also contains topic wise questions of various data structures and algorithms like
+
+
+
+ - Arrays
+ - Backtracking
+ - CBasics
+ - CbyYKanetkar
+ - CodeChef Beginners
+ - CodeForces
+ - Divide & Conquer
+ - Dynamic Programming
+ - Graph
+ - Greedy
+ - HackerEarth
+ - Hashing
+ - LinkedList
+ - OOP's
+ - Puzzles
+ - Queue
+ - STL
+ - Sieve
+ - Recursion
+ - Sorting
+ - Stack
+ - Tree
+ - BitManipulation
+ 
+
+
+
+#### Please feel free to contribute or raise any pull requests if you find bug in any code.
