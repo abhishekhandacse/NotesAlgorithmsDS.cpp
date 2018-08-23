@@ -1,46 +1,37 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 
 using namespace std;
 
 
-struct Jobs{
-	int id;
+struct job{
+	int jid;
 	int deadline;
 	int profit;
 };
-bool compare(Jobs J1,Jobs J2){
-	return (J1.profit  >  J2.profit);
+bool compare(job a,job b){
+	return ((a.profit) > (b.profit)) ;
 }
-void JobSequenceProblem(Jobs *J,int size){
-	if(size==0)
-		return;
-	int maxDead=0;
-	sort(J,J+size,compare);
-	for(int i=0;i<size;i++){
-		if(J[i].deadline > maxDead){
-			maxDead=( J[i].deadline ) ;
-		}
-	}
-	int slots[maxDead];
-	for(int i=0;i<maxDead;i++){
-		slots[i]=-1;
-	}
-	int Jobs=0,profit=0;
-	for(int i=0;i<size;i++){
-		for(int j=( (J[i].deadline)-1);j>=0;j--){
-			if(slots[j]==-1){
-				slots[j]=(J[i].id);
-				profit+=(J[i].profit);
-				Jobs++;
+void maxjobdonemaxprofit(vector<job> &jobs){
+
+	int N=jobs.size();
+	sort(jobs.begin(),jobs.end(),compare);
+
+	vector<bool> slots(N+1,false);
+
+	int num=0,profit=0;
+	for(auto i:jobs){
+		for(int j=(i.deadline);j>=1;j--){
+			if(slots[j]==false){
+				slots[j]=true;
+				num++;
+				profit+=(i.profit);
 				break;
 			}
 		}
 	}
-	// for(int i=0;i<maxDead;i++){
-	// 	cout<<slots[i]<<" ";
-	// }
-	// cout<<endl;
-	cout<<Jobs<<" "<<profit<<endl;
+
+	cout<<num<<" "<<profit<<endl;
+
 }
 
 int main(){
@@ -49,16 +40,15 @@ int main(){
 	while(tc--){
 		int N;
 		cin>>N;
-		Jobs *arr=new Jobs[N];
+
+		vector<job> jobs;
 		for(int i=0;i<N;i++){
-			int Temp;
-			cin>>Temp;
-			(arr[i].id)=Temp;
-			cin>>Temp;
-			(arr[i].deadline)=Temp;
-			cin>>Temp;
-			(arr[i].profit)=Temp;
+			int a,b,c;
+			cin>>a>>b>>c;
+			job j={a,b,c};
+			jobs.push_back(j);
 		}
-		JobSequenceProblem(arr,N);
+
+		maxjobdonemaxprofit(jobs);
 	}
-return 0;}
+}
