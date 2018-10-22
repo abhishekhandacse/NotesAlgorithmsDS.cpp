@@ -5,8 +5,8 @@ void combinations(string str,int a=0,int b=0,int c=0,string temp="",int i=0){
 	if(i==str.length()){
 		if(a && b && c)
 			cout<<temp<<endl;
-		return;
-	}
+	return;}
+	
 	if(str[i]=='a'){
 		combinations(str,a+1,b,c,temp+str[i],i+1);
 		combinations(str,a,b,c,temp,i);

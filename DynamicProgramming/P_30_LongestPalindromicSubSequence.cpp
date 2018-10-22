@@ -2,6 +2,12 @@
 
 using namespace std;
 
+static auto _____ = []() {
+    std::ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    return 0;
+}();
+
 int LongestPalinSS(string str){
 	int size=str.size();
 
