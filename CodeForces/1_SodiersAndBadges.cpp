@@ -1,60 +1,30 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define MAX 3001
-typedef long long int lint;
-void print(int *arr,int size){
-	for(int i=0;i<size;i++)
-		cout<<arr[i]<<" ";
-	cout<<endl;
-}
-void printVect(vector<int> vect){
-	for(int i=0;i<vect.size();i++)
-		cout<<vect[i]<<" ";
+#include<bits/stdc++.h>
 
-	cout<<endl;
-}
+using namespace std;
+
 int main(){
-	int size;
-	cin>>size;
-	int *arr=new int[size];
-	
-	for(int i=0;i<size;i++)
+
+
+	int n;
+	cin>>n;
+	int *arr=new int[n];
+	for(int i=0;i<n;i++)
 		cin>>arr[i];
 
-	sort(arr,arr+size);
 
-	int *hashmap=(int *)calloc(MAX,sizeof(int));
-	for(int i=0;i<size;i++){
-		hashmap[arr[i]]=hashmap[arr[i]]+1;
-	}
-	vector<int> vect;
-	// print(hashmap,MAX);
-	for(int i=1;i<MAX;i++){
-		if(hashmap[i]==0)
-			vect.push_back(i);
-	}
-	// Coolness Factor can only be increased
-	// printVect(vect);
-	int *arr_aux=(int *)calloc(size,sizeof(int));
-	int counter=0;
-	for(int i=1;i<size;i++){
-		if(arr[i]==arr[i-1]){
-			while((vect[counter]-arr[i])<0){
-				counter++;
-			}
+	sort(arr,arr+n);
 
-			arr_aux[i]=vect[counter];
-			counter++;
-		}
+	int min_coins=0;
+	int start=arr[0];
+	for(int i=0;i<n;i++,start++){
+		min_coins+=abs(start-arr[i]);
 	}
-	lint sum=0;
-	// print(arr_aux,size);
-	for(int i=0;i<size;i++){
-		if(arr_aux[i]==0)
-			continue;
 
-		sum+=abs(arr_aux[i]-arr[i]);
-	}
-	cout<<sum<<endl;	
+	cout<<min_coins<<endl;
+
 
 return 0;}
+
+// Time Complexity O(nlogn)
+
+// Bottleneck sorting
