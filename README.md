@@ -1,5 +1,5 @@
 # Notes Data Structures & Algorithms in CPP
->  This contains mine solution to various judges like codeforces,spoj,hackerearth,hackerrank,codechef etc. I have referred many usesful resources in making this repository like geeks for geeks , Algorithm book by Karumanchi , Cracking the Coding Interview , CLRS etc. 
+>  This contains my solution to various judges like codeforces,spoj,hackerearth,hackerrank,codechef etc. I have referred many usesful resources in making this repository like geeks for geeks , Algorithm book by Karumanchi , Cracking the Coding Interview , CLRS etc. 
 
 #####  This Repository also contains topic wise questions of various data structures and algorithms like
 
@@ -32,4 +32,4 @@
 
 
 
-#### Please feel free to contribute or raise any pull requests if you find bug in any code.
+#### Please feel free to contribute or raise any pull requests if you find any bug in any code :)
